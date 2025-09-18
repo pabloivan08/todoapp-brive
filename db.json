@@ -1,16 +1,28 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "description": "Comprar pan",
-      "date": "2025-09-15T10:00:00.000Z",
+      "id": "37ad",
+      "description": "hola",
+      "date": "2025-09-04T19:31:00.000Z",
       "status": "pendiente"
     },
     {
-      "id": 2,
+      "id": "7906",
+      "description": "Llorar con la llorona",
+      "date": "2025-09-22T23:54:00.000Z",
+      "status": "completado"
+    },
+    {
+      "id": "4caa",
       "description": "Bañar a Bucky",
-      "date": "2025-09-16T15:00:00.000Z",
-      "status": "en progreso"
+      "date": "2025-09-22T12:04:00.000Z",
+      "status": "pendiente"
+    },
+    {
+      "id": "d1f5",
+      "description": "Picar cebolla",
+      "date": "2025-09-19T00:00:00.000Z",
+      "status": "pendiente"
     }
   ]
 }

@@ -1,0 +1,76 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.status.pendiente {
+  background: #fde68a;
+  color: #92400e;
+}
+
+.status.en\ progreso {
+  background: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.status.completado {
+  background: #bbf7d0;
+  color: #065f46;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: #e5e7eb;
+  transition: background 0.2s;
+}
+
+.actions button:hover {
+  background: #d1d5db;
+}
+
+.delete {
+  background: #f87171;
+  color: #fff;
+}
+
+.delete:hover {
+  background: #dc2626;
+}

@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "mock:server": "json-server --watch db.json --port 4000 --delay 200",
+    "mock:server": "json-server --watch db.json --port 4000",
     "start:all": "concurrently \"npm run mock:server\" \"npm run dev\""
   },
   "dependencies": {
