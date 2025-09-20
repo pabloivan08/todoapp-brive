@@ -5,10 +5,10 @@ Aplicación web para gestionar tareas (**ToDo App**) construida con **React + Vi
 ## 🚀 Características
 
 - Listar tareas
-- Crear nuevas tareas (siempre con estado inicial **pendiente**)
+- Crear nuevas tareas
 - Editar descripción y fecha de una tarea
 - Cambiar estado de una tarea (pendiente ⇄ completado) directamente desde la lista
-- Eliminar tareas (con confirmación)
+- Eliminar tareas
 - Filtrar tareas por texto y por estado
 - Mostrar conteo dinámico: `Completaste X tareas de Y`
 - Modal para crear/editar tareas
