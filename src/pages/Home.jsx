@@ -41,7 +41,6 @@ const Home = () => {
       <FilterBar />
       <TaskList onEdit={handleEdit} />
 
-      {/* Modal que contiene TaskForm */}
       <Modal
         open={isModalOpen}
         onClose={closeModal}
@@ -50,7 +49,6 @@ const Home = () => {
         <TaskForm initial={editingTask} onClose={closeModal} />
       </Modal>
 
-      {/* Botón flotante para crear */}
       <Fab onClick={openCreate} />
     </div>
   )
