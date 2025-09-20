@@ -1,0 +1,20 @@
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  font-size: 28px;
+  line-height: 0;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+  z-index: 60;
+  transition: 0.3s;
+}
+.fab:hover { background: #1d4ed8; transform: translateY(-1px); }
+.fab:active { transform: translateY(0); }

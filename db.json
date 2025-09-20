@@ -1,27 +1,9 @@
 {
   "tasks": [
     {
-      "id": "37ad",
-      "description": "hola",
-      "date": "2025-09-04T19:31:00.000Z",
-      "status": "pendiente"
-    },
-    {
-      "id": "7906",
-      "description": "Llorar con la llorona",
-      "date": "2025-09-22T23:54:00.000Z",
-      "status": "completado"
-    },
-    {
-      "id": "4caa",
-      "description": "Bañar a Bucky",
-      "date": "2025-09-22T12:04:00.000Z",
-      "status": "pendiente"
-    },
-    {
-      "id": "d1f5",
-      "description": "Picar cebolla",
-      "date": "2025-09-19T00:00:00.000Z",
+      "id": "f7c6",
+      "description": "Bailar Salsa",
+      "date": "2025-09-21",
       "status": "pendiente"
     }
   ]

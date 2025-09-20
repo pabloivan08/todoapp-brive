@@ -1,37 +1,37 @@
-/* src/components/TaskForm/TaskForm.module.css */
 .form {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0.6rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 0.8rem;
-  margin: 0.6rem 0 0.8rem;
 }
-
+.formContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
+}
 .input {
-  padding: 0.45rem 0.6rem;
+  padding: 1rem 2rem;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 0.95rem;
+  border-radius: 50px;
+  font-size: 1.6rem;
 }
-
 .actions {
   grid-column: 1 / -1;
+  padding-top: 20px;
   display: flex;
   gap: 0.5rem;
 }
 
 .primary, .secondary {
-  padding: 0.45rem 0.8rem;
-  border-radius: 6px;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-size: 1.6rem;
   border: none;
   cursor: pointer;
-  font-size: 0.95rem;
 }
 
-.primary { background: #2563eb; color: #fff; }
+.primary { background: var(--color-secondary); color: #fff; }
 .primary:hover { background: #1d4ed8; }
 
 .secondary { background: #e5e7eb; color: #111827; }
@@ -40,5 +40,5 @@
 .error {
   grid-column: 1 / -1;
   color: #b91c1c;
-  font-size: 0.9rem;
+  font-size: 1.6rem;
 }

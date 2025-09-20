@@ -4,32 +4,54 @@ import {useTasks} from "../hooks/useTasks"
 import {TaskForm} from "../components/TaskForm"
 import {TaskList} from "../components/TaskList"
 import {FilterBar} from "../components/FilterBar"
+import {Modal} from "../components/Modal"
+import {Fab} from "../components/Fab"
+import styles from "./Home.module.css"
 
 const Home = () => {
   const [editingTask, setEditingTask] = useState(null)
   const {tasks} = useTasks()
+  const [isModalOpen, setModalOpen] = useState(false)
 
   const completedCount = tasks.filter((t) => t.status === "completado").length
   const totalCount = tasks.length
 
-  const handleEdit = (task) => setEditingTask(task)
-  const handleCloseEdit = () => setEditingTask(null)
+  const openCreate = () => {
+    setEditingTask(null)
+    setModalOpen(true)
+  }
+  
+  const handleEdit = (task) => {
+    setEditingTask(task)
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setEditingTask(null)
+  }
 
   return (
-    <div style={{ maxWidth: "760px", margin: "0 auto", padding: "1rem" }}>
-      <h1>Gestor de Tareas</h1>
-
-      {/* 👇 nuevo título dinámico */}
-      <h2 style={{ fontSize: "1rem", fontWeight: "normal", color: "#475569" }}>
-        Completaste {completedCount} tareas de {totalCount}
+    <div className={styles.container}>
+      <h1 className={styles.title}>Tareas Brivé</h1>
+      <h2 className={styles.counter}>
+        Completaste {completedCount} tarea{completedCount !== 1 && "s"} de {totalCount}
       </h2>
 
-      {!editingTask && <TaskForm />}
       <FilterBar />
-      {editingTask && (
-        <TaskForm initial={editingTask} onClose={handleCloseEdit} />
-      )}
       <TaskList onEdit={handleEdit} />
+
+      {/* Modal que contiene TaskForm */}
+      <Modal
+        open={isModalOpen}
+        onClose={closeModal}
+        title={editingTask ? "Editar tarea" : "Nueva tarea"}
+      >
+        <TaskForm initial={editingTask} onClose={closeModal} />
+      </Modal>
+
+      {/* Botón flotante para crear */}
+      <Fab onClick={openCreate} />
     </div>
   )
 }

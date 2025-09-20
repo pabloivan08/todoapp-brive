@@ -1,28 +1,29 @@
-// src/components/TaskForm/TaskForm.jsx
 import { useEffect, useState } from "react"
 import { useTasks } from "../../hooks/useTasks"
 import styles from "./TaskForm.module.css"
 
+
+const toDateOnlyString = (value) => {
+  if (!value) return ""
+  if (typeof value === "string") {
+    if (value.includes("T")) return value.slice(0, 10)
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value
+  }
+  const d = new Date(value)
+  return Number.isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 10)
+}
+
 const TaskForm = ({ initial = null, onClose }) => {
   const { createTask, updateTask } = useTasks()
   const [description, setDescription] = useState(initial?.description || "")
-  const [date, setDate] = useState(() => {
-    if (!initial?.date) return ""
-    
-    const d = new Date(initial.date)
-    const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
-      .toISOString()
-      .slice(0, 16)
-    return local
-  })
-  const [status, setStatus] = useState("pendiente")
+  const [date, setDate] = useState(() => toDateOnlyString(initial?.date))
   const [error, setError] = useState("")
 
-  useEffect(() => setError(""), [description, date, status])
+  useEffect(() => setError(""), [description, date])
 
   const validate = () => {
     if (!description.trim()) return "La descripción no puede estar vacía."
-    if (!date || Number.isNaN(new Date(date).getTime())) return "Fecha inválida."
+    if (!date || Number.isNaN(new Date(`${date}T00:00:00`).getTime())) return "Fecha inválida."
     return null
   }
 
@@ -33,8 +34,8 @@ const TaskForm = ({ initial = null, onClose }) => {
 
     const payload = {
       description: description.trim(),
-      date: new Date(date).toISOString(),
-      status, // por defecto "pendiente"
+      date, 
+      status: initial?.status || "pendiente",
     }
 
     try {
@@ -45,7 +46,6 @@ const TaskForm = ({ initial = null, onClose }) => {
         await createTask(payload)
         setDescription("")
         setDate("")
-        setStatus("pendiente") // reset
       }
     } catch {
       setError("Ocurrió un error al guardar. Intenta de nuevo.")
@@ -54,24 +54,26 @@ const TaskForm = ({ initial = null, onClose }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <input
-        className={styles.input}
-        placeholder="Descripción de la tarea"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        className={styles.input}
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
+      <div className={styles.formContainer}>
+        <input
+          className={styles.input}
+          placeholder="Descripción"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          className={styles.input}
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+      </div>
 
       {error && <div className={styles.error}>{error}</div>}
 
       <div className={styles.actions}>
         <button type="submit" className={styles.primary}>
-          {initial ? "Guardar cambios" : "Agregar"}
+          {initial ? "Guardar Edición" : "Crear Tarea"}
         </button>
         {onClose && (
           <button type="button" className={styles.secondary} onClick={onClose}>
